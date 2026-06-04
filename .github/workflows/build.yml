@@ -20,10 +20,10 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package
-        working-directory: DeathBan
+        working-directory: DeathBan-source_1
 
       - name: Upload jar artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeathBan-plugin
-          path: DeathBan/target/DeathBan-*.jar
+          path: DeathBan/target/DeathBan-source_1-*.jar
