@@ -18,11 +18,12 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build with Maven
+- name: Build with Maven
         run: mvn clean package
-
-      - name: Upload jar artifact
+        working-directory: DeathBan
+        
+    - name: Upload jar artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeathBan-plugin
-          path: target/DeathBan-*.jar
+          path: DeathBan/target/DeathBan-*.jar
