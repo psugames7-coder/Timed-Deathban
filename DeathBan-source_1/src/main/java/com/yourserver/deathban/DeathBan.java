@@ -66,7 +66,10 @@ public class DeathBan extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
+        // Ensure the plugin's data folder exists (no embedded config.yml is used).
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
+        }
 
         deathsFile = new File(getDataFolder(), "deaths.yml");
         if (!deathsFile.exists()) {
@@ -86,7 +89,9 @@ public class DeathBan extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        saveDeaths();
+        if (deathsConfig != null) {
+            saveDeaths();
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
